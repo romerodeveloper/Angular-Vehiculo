@@ -6,64 +6,98 @@
                       
           
             <div class="form-group">
-              <label for="name">NAME</label>
+              <label for="marca">MARCA</label>
+              <input
+                disabled
+                type="text"
+                class="form-control"
+                id="marca"
+                required
+                [(ngModel)]="people.marca"
+                name="marca"
+              />
+            </div>
+            <div class="form-group">
+              <label for="referencia">REFERENCIA</label>
               <input
                 type="text"
                 class="form-control"
-                id="name"
+                id="referencia"
                 required
-                [(ngModel)]="people.name"
-                name="name"
+                [(ngModel)]="people.referencia"
+                name="referencia"
               />
             </div>
-      
             <div class="form-group">
-                <label for="name">SURNAME</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="surname"
-                  required
-                  [(ngModel)]="people.surname"
-                  name="surname"
-                />
-              </div>
+              <label for="modelo">MODELO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="modelo"
+                required
+                [(ngModel)]="people.modelo"
+                name="modelo"
+              />
+            </div>
 
-              <div class="form-group">
-                <label for="name">AGE</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="age"
-                  required
-                  [(ngModel)]="people.age"
-                  name="age"
-                />
-              </div>
-              
-              <div class="form-group">
-                <label for="name">COUNTRY</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="country"
-                  required
-                  [(ngModel)]="people.country"
-                  name="country"
-                />
-              </div>
-              
-              <div class="form-group">
-                <label for="name">EMAIL</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  required
-                  [(ngModel)]="people.email"
-                  name="email"
-                />
-              </div>
+            <div class="form-group">
+              <label for="color">COLOR</label>
+              <input
+                type="text"
+                class="form-control"
+                id="color"
+                required
+                [(ngModel)]="people.color"
+                name="color"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="estadoMecanico">ESTADO MECANICO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="estadoMecanico"
+                required
+                [(ngModel)]="people.estadoMecanico"
+                name="estadoMecanico"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="fechaSoat">FECHA SOAT</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fechaSoat"
+                required
+                [(ngModel)]="people.fechaSoat"
+                name="fechaSoat"
+              />
+            </div>
+          
+            <div class="form-group">
+              <label for="fechaTecnomecanica">FECHA TECNO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fechaTecnomecanica"
+                required
+                [(ngModel)]="people.fechaTecnomecanica"
+                name="fechaTecnomecanica"
+              />
+            </div>
+            <div class="form-group">
+              <label for="traspaso">TRASPASO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="traspaso"
+                required
+                [(ngModel)]="people.traspaso"
+                name="traspaso"
+              />
+            </div>
                
               <hr>
             <button (click)="savePeople()" [disabled]="!myForm.form.valid" class="btn btn-success">Submit</button>

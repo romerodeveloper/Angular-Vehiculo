@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { People } from 'src/app/model/people';
-import { PeopleService } from 'src/app/services/people.service';
+import { Vehiculo } from 'src/app/model/vehiculo';
+import { VehiculoService } from 'src/app/services/vehiculo.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
   
 @Component({
-  selector: 'app-list-people',
-  templateUrl: './list-people.component.html',
-  styleUrls: ['./list-people.component.css']
+  selector: 'app-list-vehiculo',
+  templateUrl: './list-vehiculo.component.html',
+  styleUrls: ['./list-vehiculo.component.css']
 })
-export class ListPeopleComponent implements OnInit {
+export class ListVehiculoComponent implements OnInit {
 
-    peopleSet: People[];
-    peopleFil: People[];
+    vehiculoSet: Vehiculo[];
+    vehiculoFil: Vehiculo[];
     collectionSize: number;
     searchTerm: string;
     closeModal: string;
     msgError = '';
-    currentPeople = null;
+    currentVehiculo = null;
     currentIndex = -1;
     
-    constructor(private peopleService : PeopleService, 
+    constructor(private vehiculoService : VehiculoService, 
                     private modalService: NgbModal) { 
                       
                     }
@@ -29,9 +29,9 @@ export class ListPeopleComponent implements OnInit {
       this.refreshList();
     }
   
-    triggerModal(content:any, val:People) {
-      this.currentPeople = val
-      this.retrievePeople(this.currentPeople.id)
+    triggerModal(content:any, val:Vehiculo) {
+      this.currentVehiculo = val
+      this.retrievePeople(this.currentVehiculo.id)
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
         this.closeModal = `Closed with: ${res}`;
       }, (res) => {
@@ -50,15 +50,15 @@ export class ListPeopleComponent implements OnInit {
     }
   
     search(value: string): void {
-      this.peopleFil = this.peopleSet.filter((val) => val.name.toLowerCase().includes(value));
-      this.collectionSize = this.peopleFil.length;
+      this.vehiculoFil = this.vehiculoSet.filter((val) => val.referencia.toLowerCase().includes(value));
+      this.collectionSize = this.vehiculoFil.length;
     }
   
     retrievePeoples(): void {
-      this.peopleService.getAll()
+      this.vehiculoService.getAll()
         .subscribe(
           data => {
-            this.peopleSet = data;
+            this.vehiculoSet = data;
             console.log(data);
           },
           error => {
@@ -67,10 +67,10 @@ export class ListPeopleComponent implements OnInit {
     }
   
     retrievePeople(val:string): void {
-      this.peopleService.get(val)
+      this.vehiculoService.get(val)
         .subscribe(
           data => {
-            this.currentPeople = data;
+            this.currentVehiculo = data;
             console.log(data);
           },
           error => {
@@ -80,7 +80,7 @@ export class ListPeopleComponent implements OnInit {
     }
   
     updatePeople(): void {
-     this.peopleService.update(this.currentPeople.id, this.currentPeople)
+     this.vehiculoService.update(this.currentVehiculo.id, this.currentVehiculo)
         .subscribe(
           data => {
             this.refreshList();
@@ -92,7 +92,7 @@ export class ListPeopleComponent implements OnInit {
     }
   
     deletePeople(val1:string): void {
-      this.peopleService.delete(val1)
+      this.vehiculoService.delete(val1)
          .subscribe(
            data => {
              this.refreshList();
@@ -103,8 +103,8 @@ export class ListPeopleComponent implements OnInit {
            });
      }
   
-    setActivePeople(people : People, index : number): void {
-      this.currentPeople = people;
+    setActivePeople(vehiculo : Vehiculo, index : number): void {
+      this.currentVehiculo = vehiculo;
       this.currentIndex = index
     }
   

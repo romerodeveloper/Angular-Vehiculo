@@ -12,20 +12,27 @@
         <table class="table table-striped">
           <thead>
             <th>ID</th>
-            <th>NAME</th>
-            <th>SURNAME</th>
-            <th>AGE</th>            
-            <th>COUNTRY</th>
-            <th>EMAIL</th>
+            <th>MARCA</th>
+            <th>REFERENCIA</th>
+            <th>MODELO</th>            
+            <th>COLOR</th>
+            <th>ESTADO MECANICO</th>
+            <th>FECHA SOAT</th>
+            <th>FECHA TECNOMECANICA</th>
+            <th>TRASPASO</th>
+
           </thead>
           <tbody>
-            <tr *ngFor="let item of peopleSet | listFilter: searchTerm ; let i = index " >
+            <tr *ngFor="let item of vehiculoSet | listFilter: searchTerm ; let i = index " >
               <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.surname}}</td>
-              <td>{{item.age}}</td>
-              <td>{{item.country}}</td>
-              <td>{{item.email}}</td>
+              <td>{{item.marca}}</td>
+              <td>{{item.referencia}}</td>
+              <td>{{item.modelo}}</td>
+              <td>{{item.color}}</td>
+              <td>{{item.estadoMecanico}}</td>
+              <td>{{item.fechaSoat}}</td>
+              <td>{{item.fechaTecnomecanica}}</td>
+              <td>{{item.traspaso}}</td>
               <td>
                 <button class="btn btn-info btn-sm"    
                 (click)="triggerModal(modalData, item)">
@@ -45,7 +52,7 @@
   
   <ng-template #modalData let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Edit People</h4>
+      <h4 class="modal-title" id="modal-basic-title">Editar Vehiculo</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -55,76 +62,98 @@
       <div style="width: 400px; margin: auto;">
         <div class="submit-form">
             <div class="form-group">
-              <label for="isbn">ID</label>
+              <label for="marca">MARCA</label>
               <input
                 disabled
                 type="text"
                 class="form-control"
-                id="isbn"
+                id="marca"
                 required
-                [(ngModel)]="currentPeople.id"
-                name="isbn"
+                [(ngModel)]="currentVehiculo.marca"
+                name="marca"
               />
             </div>
             <div class="form-group">
-              <label for="name">NAME</label>
+              <label for="referencia">REFERENCIA</label>
               <input
                 type="text"
                 class="form-control"
-                id="name"
+                id="referencia"
                 required
-                [(ngModel)]="currentPeople.name"
-                name="name"
+                [(ngModel)]="currentVehiculo.referencia"
+                name="referencia"
               />
             </div>
             <div class="form-group">
-              <label for="name">SURNAME</label>
+              <label for="modelo">MODELO</label>
               <input
                 type="text"
                 class="form-control"
-                id="surname"
+                id="modelo"
                 required
-                [(ngModel)]="currentPeople.surname"
-                name="surname"
+                [(ngModel)]="currentVehiculo.modelo"
+                name="modelo"
               />
             </div>
 
             <div class="form-group">
-              <label for="name">AGE</label>
+              <label for="color">COLOR</label>
               <input
                 type="text"
                 class="form-control"
-                id="age"
+                id="color"
                 required
-                [(ngModel)]="currentPeople.age"
-                name="age"
+                [(ngModel)]="currentVehiculo.color"
+                name="color"
               />
             </div>
             
             <div class="form-group">
-              <label for="name">COUNTRY</label>
+              <label for="estadoMecanico">ESTADO MECANICO</label>
               <input
                 type="text"
                 class="form-control"
-                id="country"
+                id="estadoMecanico"
                 required
-                [(ngModel)]="currentPeople.country"
-                name="country"
+                [(ngModel)]="currentVehiculo.estadoMecanico"
+                name="estadoMecanico"
               />
             </div>
             
             <div class="form-group">
-              <label for="name">EMAIL</label>
+              <label for="fechaSoat">FECHA SOAT</label>
               <input
                 type="text"
                 class="form-control"
-                id="email"
+                id="fechaSoat"
                 required
-                [(ngModel)]="currentPeople.email"
-                name="email"
+                [(ngModel)]="currentVehiculo.fechaSoat"
+                name="fechaSoat"
               />
             </div>
           
+            <div class="form-group">
+              <label for="fechaTecnomecanica">FECHA TECNO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fechaTecnomecanica"
+                required
+                [(ngModel)]="currentVehiculo.fechaTecnomecanica"
+                name="fechaTecnomecanica"
+              />
+            </div>
+            <div class="form-group">
+              <label for="traspaso">TRASPASO</label>
+              <input
+                type="text"
+                class="form-control"
+                id="traspaso"
+                required
+                [(ngModel)]="currentVehiculo.traspaso"
+                name="traspaso"
+              />
+            </div>
 
             </div>
           </div>

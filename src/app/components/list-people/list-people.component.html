@@ -1,0 +1,141 @@
+<form #myForm="ngForm">
+
+<div class="container">
+    <div class="card">
+      <h3 class="text-center">People List</h3>
+      <div class="card-body">
+      <div class="form-group form-inline">
+        Search people by name:
+        <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"
+          (input)="search($event.target.value)" />
+      </div>
+        <table class="table table-striped">
+          <thead>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+            <th>AGE</th>            
+            <th>COUNTRY</th>
+            <th>EMAIL</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of peopleSet | listFilter: searchTerm ; let i = index " >
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.surname}}</td>
+              <td>{{item.age}}</td>
+              <td>{{item.country}}</td>
+              <td>{{item.email}}</td>
+              <td>
+                <button class="btn btn-info btn-sm"    
+                (click)="triggerModal(modalData, item)">
+                  Edit </button>
+                  &nbsp;
+                <button class='btn btn-danger btn-sm' (click)="deletePeople(item.id)" >
+                  Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit People</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+  
+      <div style="width: 400px; margin: auto;">
+        <div class="submit-form">
+            <div class="form-group">
+              <label for="isbn">ID</label>
+              <input
+                disabled
+                type="text"
+                class="form-control"
+                id="isbn"
+                required
+                [(ngModel)]="currentPeople.id"
+                name="isbn"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">NAME</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                required
+                [(ngModel)]="currentPeople.name"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">SURNAME</label>
+              <input
+                type="text"
+                class="form-control"
+                id="surname"
+                required
+                [(ngModel)]="currentPeople.surname"
+                name="surname"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="name">AGE</label>
+              <input
+                type="text"
+                class="form-control"
+                id="age"
+                required
+                [(ngModel)]="currentPeople.age"
+                name="age"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="name">COUNTRY</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                required
+                [(ngModel)]="currentPeople.country"
+                name="country"
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="name">EMAIL</label>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                required
+                [(ngModel)]="currentPeople.email"
+                name="email"
+              />
+            </div>
+          
+
+            </div>
+          </div>
+      
+    
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" 
+      (click)="updatePeople()"
+      (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+</form>

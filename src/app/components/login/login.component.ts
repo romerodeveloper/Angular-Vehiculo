@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       sessionStorage.setItem("usuario", this.username);
-      alert(sessionStorage.getItem("usuario"))
+      alert("Bienvenido  "+sessionStorage.getItem("usuario"))
       this.apps.isLoggedIn = true
       this.successMessage = 'Login Successful.';
       this.router.navigate(['/list']);

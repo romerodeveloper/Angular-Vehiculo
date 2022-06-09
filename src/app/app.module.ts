@@ -11,12 +11,18 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListFilterPipe } from './services/listerfilter.service';
 
+import { LoginComponent } from './components/login/login.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { LogoutComponent } from './components/logout/logout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AddVehiculoComponent,
     ListVehiculoComponent, 
-    ListFilterPipe
+    ListFilterPipe,
+    LoginComponent, 
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,11 @@ import { ListFilterPipe } from './services/listerfilter.service';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

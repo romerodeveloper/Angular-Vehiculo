@@ -2,16 +2,15 @@
 
 <div class="container">
     <div class="card">
-      <h3 class="text-center">People List</h3>
+      <h3 class="text-center">Lista de Vehiculos</h3>
       <div class="card-body">
       <div class="form-group form-inline">
-        Search people by name:
+        Busqueda de vehiculos por marca:
         <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"
           (input)="search($event.target.value)" />
       </div>
         <table class="table table-striped">
           <thead>
-            <th>ID</th>
             <th>MARCA</th>
             <th>REFERENCIA</th>
             <th>MODELO</th>            
@@ -23,8 +22,7 @@
 
           </thead>
           <tbody>
-            <tr *ngFor="let item of vehiculoSet | listFilter: searchTerm ; let i = index " >
-              <td>{{item.id}}</td>
+            <tr *ngFor="let item of vehiculoSet" >
               <td>{{item.marca}}</td>
               <td>{{item.referencia}}</td>
               <td>{{item.modelo}}</td>
@@ -36,10 +34,10 @@
               <td>
                 <button class="btn btn-info btn-sm"    
                 (click)="triggerModal(modalData, item)">
-                  Edit </button>
+                  Actualizar</button>
                   &nbsp;
                 <button class='btn btn-danger btn-sm' (click)="deletePeople(item.id)" >
-                  Delete</button>
+                  Eliminar</button>
               </td>
             </tr>
           </tbody>
@@ -64,7 +62,6 @@
             <div class="form-group">
               <label for="marca">MARCA</label>
               <input
-                disabled
                 type="text"
                 class="form-control"
                 id="marca"
@@ -123,7 +120,7 @@
             <div class="form-group">
               <label for="fechaSoat">FECHA SOAT</label>
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="fechaSoat"
                 required
@@ -135,7 +132,7 @@
             <div class="form-group">
               <label for="fechaTecnomecanica">FECHA TECNO</label>
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="fechaTecnomecanica"
                 required
@@ -163,7 +160,7 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-success" 
       (click)="updatePeople()"
-      (click)="modal.close('Save click')">Save</button>
+      (click)="modal.close('Save click')">Guardar</button>
     </div>
   </ng-template>
 

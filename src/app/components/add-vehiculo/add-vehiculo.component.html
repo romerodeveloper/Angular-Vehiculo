@@ -8,7 +8,6 @@
             <div class="form-group">
               <label for="marca">MARCA</label>
               <input
-                disabled
                 type="text"
                 class="form-control"
                 id="marca"
@@ -67,7 +66,7 @@
             <div class="form-group">
               <label for="fechaSoat">FECHA SOAT</label>
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="fechaSoat"
                 required
@@ -79,7 +78,7 @@
             <div class="form-group">
               <label for="fechaTecnomecanica">FECHA TECNO</label>
               <input
-                type="text"
+                type="date"
                 class="form-control"
                 id="fechaTecnomecanica"
                 required
@@ -100,12 +99,12 @@
             </div>
                
               <hr>
-            <button (click)="savePeople()" [disabled]="!myForm.form.valid" class="btn btn-success">Submit</button>
+            <button (click)="savePeople()" [disabled]="!myForm.form.valid" class="btn btn-success">Registrar</button>
           </div>
           
           <div *ngIf="submitted">
-            <h4>You submitted successfully!</h4>
-            <button class="btn btn-success" (click)="newPeople()">Add</button>
+            <h4>¡Se registro correctamente!</h4>
+            <button class="btn btn-success" (click)="newPeople()">Agregar nuevo vehiculo</button>
           </div>
           
         </div> 

@@ -1,12 +1,15 @@
 <div>
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
+    <nav class="navbar navbar-expand navbar-dark btn-danger">
       <div class="navbar-nav mr-auto">
         <div class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a routerLink="list" class="nav-link">LISTAR PERSONAS</a>
+            <a *ngIf="isLoggedIn" routerLink="list" class="nav-link">LISTAR VEHICULOS</a>
           </li>
           <li class="nav-item">
-            <a routerLink="add" class="nav-link">AGREGAR PERSONA</a>
+            <a *ngIf="isLoggedIn" routerLink="add" class="nav-link">AGREGAR VEHICULO</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="isLoggedIn" class="nav-link" href="/logout" (click)=handleLogout()>CERRAR SESION</a>
           </li>
         </div>
       </div>
